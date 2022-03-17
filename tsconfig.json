@@ -8,6 +8,8 @@
       "jsx": "preserve",
       "sourceMap": true,
       "resolveJsonModule": true,
+      "alwaysStrict": true,
+      "baseUrl": ".",
       "esModuleInterop": true,
       "lib": ["esnext", "dom"],
       "paths": {
