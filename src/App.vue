@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { runInputHooks, onInput } from '/src/helpers/useInput';
+import { onMounted } from 'vue';
 import { useEventListener } from '@vueuse/core';
+
+import { runInputHooks, onInput } from '/src/composables/useInput';
 import { isValidChar } from '/src/helpers/isValidChar';
 import { isRepeating } from '/src/helpers/isRepeating';
 import { currentWords } from '/src/store';
 import { saveChar } from '/src/helpers/saveChar';
-import { onMounted } from 'vue';
 import { pickRandomWord } from '/src/helpers/pickRandomWord';
 import Word from '/src/components/Word.vue';
-import { onWordMatch } from '/src/helpers/wordMatch';
+import { onWordMatch } from '/src/composables/wordMatch';
 
 onWordMatch((word) => {
    const index = currentWords.value.indexOf(word);

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { onInput } from '/src/helpers/useInput';
-import { runWordMatchHooks } from '/src/helpers/wordMatch';
+import { onInput } from '/src/composables/useInput';
+import { runWordMatchHooks } from '/src/composables/wordMatch';
 import { resettableRef } from '/src/helpers/resettableRef';
 
 interface Props {
