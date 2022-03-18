@@ -2,24 +2,23 @@
 import { ref } from 'vue';
 import { onInput } from '/src/helpers/useInput';
 import { runWordMatchHooks } from '/src/helpers/wordMatch';
+import { resettableRef } from '/src/helpers/resettableRef';
 
 interface Props {
    word: string;
 }
 const props = defineProps<Props>();
 
-const matchArray = ref<boolean[]>(Array(props.word.length).fill(false));
+const [matchArray, resetMatchArray] = resettableRef<boolean[]>(() => Array(props.word.length).fill(false));
 
 onInput((char) => {
    const charIndex = matchArray.value.indexOf(false);
    if (charIndex === -1) return;
 
    const wordChar = props.word.charAt(charIndex);
-   if (wordChar && char === wordChar) {
-      matchArray.value[charIndex] = true;
-   } else {
-      matchArray.value = Array(props.word.length).fill(false);
-   }
+
+   if (wordChar && char === wordChar) matchArray.value[charIndex] = true;
+   else return resetMatchArray();
 
    if (matchArray.value.every(Boolean)) {
       runWordMatchHooks(props.word);
