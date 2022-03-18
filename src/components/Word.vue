@@ -14,7 +14,7 @@ onInput((char) => {
    const charIndex = matchArray.value.indexOf(false);
    if (charIndex === -1) return;
 
-   const wordChar = props.word.charAt(charIndex);
+   const wordChar = props.word[charIndex];
 
    if (wordChar && char === wordChar) matchArray.value[charIndex] = true;
    else return resetMatchArray();
@@ -27,7 +27,7 @@ onInput((char) => {
 
 <template>
    <li>
-      <span :class="{ matching }" v-for="(matching, index) in matchArray">{{ props.word.charAt(index) }}</span>
+      <span :class="{ matching }" v-for="(matching, index) in matchArray">{{ props.word[index] }}</span>
    </li>
 </template>
 
