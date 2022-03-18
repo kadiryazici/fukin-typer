@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { onInput } from '/src/composables/useInput';
 import { runWordMatchHooks } from '/src/composables/wordMatch';
-import { resettableRef } from '/src/helpers/resettableRef';
+import { resettableRef } from '/src/composables/resettableRef';
 
 interface Props {
    word: string;
