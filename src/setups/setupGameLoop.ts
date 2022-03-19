@@ -14,7 +14,7 @@ function calculateDelta() {
 }
 
 function startLoop() {
-   currentInterval = setInterval(() => {
+   currentInterval = window.setInterval(() => {
       calculateDelta();
       if (gameStatus.value === GameStatus.Stopped) return;
 

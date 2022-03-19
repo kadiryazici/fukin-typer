@@ -5,6 +5,7 @@
    "scripts": {
       "dev": "vite",
       "build": "vue-tsc --noEmit && vite build",
+      "build:pages": "cross-env ghpages=yes npm run build",
       "preview": "vite preview"
    },
    "dependencies": {
@@ -15,7 +16,9 @@
    },
    "devDependencies": {
       "@babel/types": "7.17.0",
+      "@types/node": "^17.0.21",
       "@vitejs/plugin-vue": "2.2.4",
+      "cross-env": "^7.0.3",
       "sass": "1.49.9",
       "typescript": "4.5",
       "vite": "2.8.6",
