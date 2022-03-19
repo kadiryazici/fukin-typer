@@ -1,42 +1,31 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { useEventListener } from '@vueuse/core';
+import { setupKeyboardHandling } from '/src/setups/setupKeyboardHandling';
+import { setupGameLoop } from '/src/setups/setupGameLoop';
+import UserArea from './components/UserArea.vue';
+import { createEnemy } from '/src/helpers/createEnemy';
+import Enemies from '/src/components/Enemies.vue';
+import { watch } from 'vue';
+import { savedChars, userInput } from '/src/store';
+import { onInterval, onKeyPress, onWordMatch, runCharsChangeHook, runSubmitHooks } from '/src/composables/hooks';
+import { killEnemy } from '/src/helpers/killEnemy';
 
-import { runInputHooks, onInput } from '/src/composables/useInput';
-import { isValidChar } from '/src/helpers/isValidChar';
-import { isRepeating } from '/src/helpers/isRepeating';
-import { currentWords } from '/src/store';
-import { saveChar } from '/src/helpers/saveChar';
-import { pickRandomWord } from '/src/helpers/pickRandomWord';
-import Word from '/src/components/Word.vue';
-import { onWordMatch } from '/src/composables/wordMatch';
+onInterval(2000, () => createEnemy());
+onKeyPress('Enter', () => {
+   runSubmitHooks(userInput.value);
+   savedChars.value = [];
+});
 
 onWordMatch((word) => {
-   const index = currentWords.value.indexOf(word);
-   currentWords.value.splice(index, 1);
+   killEnemy(word);
 });
 
-onInput((key) => {
-   console.log(key);
-});
+watch(savedChars, runCharsChangeHook, { deep: true });
 
-useEventListener('keydown', (e) => {
-   const char = e.key.toLowerCase();
-   if (isRepeating(e) || !isValidChar(char) || e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) return;
-   e.preventDefault();
-   runInputHooks(char);
-   saveChar(char);
-});
-
-onMounted(() => {
-   setInterval(() => {
-      currentWords.value.push(pickRandomWord());
-   }, 1000);
-});
+setupKeyboardHandling();
+setupGameLoop();
 </script>
 
 <template>
-   <ul>
-      <Word :word="word" :key="word" v-for="word in currentWords" />
-   </ul>
+   <UserArea />
+   <Enemies />
 </template>
