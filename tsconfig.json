@@ -11,6 +11,7 @@
       "alwaysStrict": true,
       "baseUrl": ".",
       "esModuleInterop": true,
+      "types": ["unplugin-icons/types/vue"],
       "lib": ["esnext", "dom"],
       "paths": {
          "/*": ["./*"]

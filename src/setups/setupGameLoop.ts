@@ -16,7 +16,7 @@ function calculateDelta() {
 function startLoop() {
    currentInterval = window.setInterval(() => {
       calculateDelta();
-      if (gameStatus.value === GameStatus.Stopped) return;
+      if (gameStatus.value !== GameStatus.Running) return;
 
       frameCount.value += 1;
       runGameLoopHooks(delta.value);
@@ -25,14 +25,4 @@ function startLoop() {
 
 export function setupGameLoop() {
    startLoop();
-
-   watch(gameStatus, (status) => {
-      if (status === GameStatus.WaitingToStart || status === GameStatus.Over) {
-         clearInterval(currentInterval);
-         currentInterval = -1;
-      }
-      if (status === GameStatus.Running) {
-         startLoop();
-      }
-   });
 }

@@ -5,18 +5,18 @@ import UserArea from './components/UserArea.vue';
 import { createEnemy } from '/src/helpers/createEnemy';
 import Enemies from '/src/components/Enemies.vue';
 import { watch } from 'vue';
-import { savedChars, userInput } from '/src/store';
+import { GameStatus, gameStatus, savedChars, userInput } from '/src/store';
 import { onInterval, onKeyPress, onWordMatch, runCharsChangeHook, runSubmitHooks } from '/src/composables/hooks';
 import { killEnemy } from '/src/helpers/killEnemy';
+import Modal from '/src/components/Modal/index.vue';
 
+onWordMatch(killEnemy);
 onInterval(2000, () => createEnemy());
 onKeyPress('Enter', () => {
+   if (gameStatus.value !== GameStatus.Running) return;
+
    runSubmitHooks(userInput.value);
    savedChars.value = [];
-});
-
-onWordMatch((word) => {
-   killEnemy(word);
 });
 
 watch(savedChars, runCharsChangeHook, { deep: true });
@@ -26,6 +26,9 @@ setupGameLoop();
 </script>
 
 <template>
+   <Modal :modelValue="gameStatus === GameStatus.Stopped" @update:modelValue="gameStatus = GameStatus.Running">
+      <div class="stop-modal">Stopped</div>
+   </Modal>
    <UserArea />
    <Enemies />
 </template>

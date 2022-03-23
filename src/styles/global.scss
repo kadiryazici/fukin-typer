@@ -20,3 +20,25 @@ body {
    width: 100vw;
    overflow: hidden;
 }
+
+@keyframes _word_popup {
+   0% {
+      transform: scale(0.8);
+   }
+   80% {
+      transform: scale(1.3);
+   }
+   100% {
+      transform: scale(1);
+   }
+}
+
+.stop-modal {
+   background-color: white;
+   border-radius: 10px;
+   font-size: 50px;
+   align-items: center;
+   justify-content: center;
+   display: flex;
+   width: 100%;
+}
