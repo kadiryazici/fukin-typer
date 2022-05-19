@@ -19,11 +19,10 @@ const positionStyles = computed(() => ({
 const [matchArray, resetMatchArray] = resettableRef<boolean[]>(() => Array(props.word.length).fill(false));
 
 onCharsChange((chars) => {
-   if (chars.length > props.word.length) {
-      return resetMatchArray();
-   }
-
    resetMatchArray();
+
+   if (chars.length > props.word.length) return;
+
    for (let i = 0; i < chars.length; i++) {
       const char = chars[i];
       const wordChar = props.word[i];
