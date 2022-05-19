@@ -1,7 +1,4 @@
 import { computed, ref, shallowRef } from 'vue';
-
-import { defineStore } from 'pinia';
-
 export interface Word {
    word: string;
    speed: number; // 1 is default speed, which means 10 seconds. 2 means 5 seconds .... goes like that.

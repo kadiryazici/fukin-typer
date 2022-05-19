@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useKey } from '/src/composables/useKey';
+
 interface Props {
    modelValue: boolean;
 }
@@ -12,6 +14,8 @@ const emit = defineEmits<Emits>();
 const setVisibility = (visibility: boolean) => {
    emit('update:modelValue', visibility);
 };
+
+useKey('esc', () => setVisibility(false), { source: () => props.modelValue });
 </script>
 
 <template>

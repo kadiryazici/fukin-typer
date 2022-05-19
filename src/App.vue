@@ -6,13 +6,14 @@ import { createEnemy } from '/src/helpers/createEnemy';
 import Enemies from '/src/components/Enemies.vue';
 import { watch } from 'vue';
 import { GameStatus, gameStatus, savedChars, userInput } from '/src/store';
-import { onInterval, onKeyPress, onWordMatch, runCharsChangeHook, runSubmitHooks } from '/src/composables/hooks';
+import { onInterval, onWordMatch, runCharsChangeHook, runSubmitHooks } from '/src/composables/hooks';
 import { killEnemy } from '/src/helpers/killEnemy';
 import Modal from '/src/components/Modal/index.vue';
+import { useKey } from './composables/useKey';
 
 onWordMatch(killEnemy);
 onInterval(2000, () => createEnemy());
-onKeyPress('Enter', () => {
+useKey('enter', () => {
    if (gameStatus.value !== GameStatus.Running) return;
 
    runSubmitHooks(userInput.value);

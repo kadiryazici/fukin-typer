@@ -1,4 +1,4 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 specifiers:
   '@babel/types': 7.17.0
@@ -8,6 +8,7 @@ specifiers:
   '@vitejs/plugin-vue': 2.2.4
   '@vueuse/core': 8.1.1
   cross-env: ^7.0.3
+  hotkeys-js: ^3.9.3
   nanoid: 3.3.1
   pinia: 2.0.12
   sass: 1.49.9
@@ -19,8 +20,9 @@ specifiers:
 
 dependencies:
   '@vueuse/core': 8.1.1_vue@3.2.31
+  hotkeys-js: 3.9.3
   nanoid: 3.3.1
-  pinia: 2.0.12_typescript@4.5.5+vue@3.2.31
+  pinia: 2.0.12_yiky6a7nq42a76m3cgtakyoff4
   vue: 3.2.31
 
 devDependencies:
@@ -52,12 +54,13 @@ packages:
   /@babel/helper-validator-identifier/7.16.7:
     resolution: {integrity: sha512-hsEnFemeiW4D08A5gUAZxLBTXpZ39P+a+DGDsHw1yxqyQ/jzFEnxf5uTEGp+3bzAbNOxU1paTgYS4ECU/IgfDw==}
     engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/parser/7.17.7:
     resolution: {integrity: sha512-bm3AQf45vR4gKggRfvJdYJ0gFLoCbsPxiFLSH6hTVYABptNHY6l9NrhnucVjQ/X+SPtLANT9lc0fFhikj+VBRA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+    dependencies:
+      '@babel/types': 7.17.0
 
   /@babel/types/7.17.0:
     resolution: {integrity: sha512-TmKSNO4D5rzhL5bjWFcVHHLETzfQ/AmbKpKPOSjlP0WoHZ6L911fgoOKY4Alp/emzG4cHJdyN49zpgkbXFEHHw==}
@@ -65,7 +68,6 @@ packages:
     dependencies:
       '@babel/helper-validator-identifier': 7.16.7
       to-fast-properties: 2.0.0
-    dev: true
 
   /@iconify-icons/ph/1.2.1:
     resolution: {integrity: sha512-nL8Z65lmoWBFgv4grTvyB03Nv0rDwt1S5eXl5gXMWo2gUfKRTfGzPKUeYIiiDsfyVA5sRX9F76qJHcsFqvCfcw==}
@@ -693,6 +695,10 @@ packages:
       function-bind: 1.1.1
     dev: true
 
+  /hotkeys-js/3.9.3:
+    resolution: {integrity: sha512-s+f0xyvDmf6+DyrFQ2SY+eA7lbvMbjqkqi0I0SpMgnN5tZx7DeH8nsWhkJR4KEq3pxDPHJppDUhdt1rZFW5LeQ==}
+    dev: false
+
   /human-signals/2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
@@ -867,7 +873,7 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /pinia/2.0.12_typescript@4.5.5+vue@3.2.31:
+  /pinia/2.0.12_yiky6a7nq42a76m3cgtakyoff4:
     resolution: {integrity: sha512-tUeuYGFrLU5irmGyRAIxp35q1OTcZ8sKpGT4XkPeVcG35W4R6cfXDbCGexzmVqH5lTQJJTXXbNGutIu9yS5yew==}
     peerDependencies:
       '@vue/composition-api': ^1.4.0
@@ -995,7 +1001,6 @@ packages:
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=}
     engines: {node: '>=4'}
-    dev: true
 
   /to-regex-range/5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}

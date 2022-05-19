@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { playSound, Sounds } from '/src/helpers/playSound';
 import { GameStatus, gameStatus, savedChars } from '/src/store';
-import { onInput, onKeyPress } from '/src/composables/hooks';
+import { onInput } from '/src/composables/hooks';
 
 import PlayIcon from 'virtual:icons/ph/play-fill';
 import PauseIcon from 'virtual:icons/ph/pause-fill';
 import { toggleGameStatus } from '/src/helpers/toggleGameStatus';
+import { useKey } from '../composables/useKey';
 
 onInput((char) => {
    if (gameStatus.value === GameStatus.WaitingToStart) {
@@ -16,27 +17,25 @@ onInput((char) => {
    playSound(Sounds.Typing, 0.1);
 });
 
-onKeyPress(
-   'Backspace',
-   (e) => {
+useKey(
+   'backspace',
+   () => {
       if (gameStatus.value === GameStatus.Stopped || gameStatus.value === GameStatus.Over) return;
-
-      if (e.ctrlKey) {
-         e.preventDefault();
-         savedChars.value.length = 0;
-         return;
-      }
       savedChars.value.pop();
    },
    { repeat: true },
 );
 
-onKeyPress('p', (e) => {
-   if (!e.ctrlKey) return;
+useKey(
+   'ctrl+backspace,command+backspace',
+   () => {
+      if (gameStatus.value === GameStatus.Stopped || gameStatus.value === GameStatus.Over) return;
 
-   e.preventDefault();
-   toggleGameStatus();
-});
+      savedChars.value.length = 0;
+   },
+   { prevent: true },
+);
+useKey('ctrl+p,command+p', toggleGameStatus, { prevent: true });
 </script>
 
 <template>

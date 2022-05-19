@@ -2,9 +2,7 @@ import { GameStatus, delta, frameCount, gameStatus } from '/src/store';
 
 import { FPS } from '/src/constants';
 import { runGameLoopHooks } from '/src/composables/gameLoop';
-import { watch } from 'vue';
 
-let currentInterval = -1;
 let oldTime = performance.now();
 
 function calculateDelta() {
@@ -14,7 +12,7 @@ function calculateDelta() {
 }
 
 function startLoop() {
-   currentInterval = window.setInterval(() => {
+   window.setInterval(() => {
       calculateDelta();
       if (gameStatus.value !== GameStatus.Running) return;
 
