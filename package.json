@@ -4,9 +4,10 @@
    "version": "0.0.0",
    "scripts": {
       "dev": "vite",
-      "build": "vue-tsc --noEmit && vite build",
+      "build": "npm run typecheck && vite build",
       "build:pages": "cross-env ghpages=yes npm run build",
-      "preview": "vite preview"
+      "preview": "vite preview",
+      "typecheck": "vue-tsc --noEmit"
    },
    "dependencies": {
       "hotkeys-js": "3.9.3",

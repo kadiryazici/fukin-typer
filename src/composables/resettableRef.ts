@@ -1,4 +1,4 @@
-import { Ref, ref } from 'vue';
+import { type Ref, ref } from 'vue';
 
 export function resettableRef<T>(creator: () => T): [Ref<T>, () => void] {
    const val = ref<T>(creator()) as Ref<T>;

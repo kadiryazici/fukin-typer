@@ -1,5 +1,5 @@
-import hotkeys, { HotkeysEvent } from 'hotkeys-js';
-import { ComputedRef, getCurrentScope, onMounted, onScopeDispose, Ref, watch } from 'vue';
+import hotkeys, { type HotkeysEvent } from 'hotkeys-js';
+import { type ComputedRef, getCurrentScope, onMounted, onScopeDispose, type Ref, watch } from 'vue';
 
 type UseKeyHandler = (event: KeyboardEvent, hotkeysEvent: HotkeysEvent) => void;
 
