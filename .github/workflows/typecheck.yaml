@@ -1,11 +1,11 @@
-name: Pages
+name: TypeCheck
 
 on: push
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-    name: Pages
+    name: TypeCheck
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
