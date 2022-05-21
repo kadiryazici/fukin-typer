@@ -1,4 +1,6 @@
 {
+   "extends": "@vue/tsconfig/tsconfig.web.json",
+   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
    "compilerOptions": {
       "target": "esnext",
       "useDefineForClassFields": true,
@@ -16,7 +18,6 @@
       "paths": {
          "/*": ["./*"]
       },
-
       "noUnusedParameters": true,
       "noUnusedLocals": true,
       "noImplicitThis": true,
@@ -25,6 +26,9 @@
       "noImplicitOverride": true,
       "noImplicitReturns": true
    },
-   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-   "references": [{ "path": "./tsconfig.node.json" }]
+   "references": [
+      {
+         "path": "./tsconfig.vite-config.json"
+      }
+   ]
 }
