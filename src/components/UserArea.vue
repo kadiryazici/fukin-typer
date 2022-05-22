@@ -1,4 +1,7 @@
-<script lang="ts" setup>
+<script
+   lang="ts"
+   setup
+>
 import { playSound, Sounds } from '/src/helpers/playSound';
 import { GameStatus, gameStatus, savedChars } from '/src/store';
 import { onInput } from '/src/composables/hooks';
@@ -42,7 +45,11 @@ useKey('ctrl+p,command+p', toggleGameStatus, { prevent: true });
    <div class="_typing_area">
       <div class="_head">
          <button @click="gameStatus = gameStatus === GameStatus.Running ? GameStatus.Stopped : GameStatus.Running">
-            <Transition mode="out-in" enterActiveClass="_char_enter" leaveActiveClass="_char_leave">
+            <Transition
+               mode="out-in"
+               enterActiveClass="_char_enter"
+               leaveActiveClass="_char_leave"
+            >
                <PlayIcon v-if="gameStatus !== GameStatus.Running" />
                <PauseIcon v-else />
             </Transition>
@@ -50,18 +57,33 @@ useKey('ctrl+p,command+p', toggleGameStatus, { prevent: true });
       </div>
 
       <div class="_user-area">
-         <div v-if="savedChars.length === 0 && gameStatus === GameStatus.WaitingToStart" class="_placeholder">
+         <div
+            v-if="savedChars.length === 0 && gameStatus === GameStatus.WaitingToStart"
+            class="_placeholder"
+         >
             Type to start
          </div>
 
-         <TransitionGroup enterActiveClass="_char_enter" leaveActiveClass="_char_leave">
-            <span v-for="(char, index) in savedChars" :key="char + index" class="_char">{{ char }}</span>
+         <TransitionGroup
+            enterActiveClass="_char_enter"
+            leaveActiveClass="_char_leave"
+         >
+            <span
+               v-for="(char, index) in savedChars"
+               :key="char + index"
+               class="_char"
+            >
+               {{ char }}
+            </span>
          </TransitionGroup>
       </div>
    </div>
 </template>
 
-<style lang="scss" scoped>
+<style
+   lang="scss"
+   scoped
+>
 $accent: rgb(121 66 240 / 1);
 
 ._typing_area {

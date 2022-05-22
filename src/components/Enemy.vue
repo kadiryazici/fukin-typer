@@ -1,4 +1,7 @@
-<script lang="ts" setup>
+<script
+   lang="ts"
+   setup
+>
 import { resettableRef } from '/src/composables/resettableRef';
 import { onCharsChange, onSubmit, runWordMatchHooks } from '/src/composables/hooks';
 import { computed } from 'vue';
@@ -48,11 +51,20 @@ onSubmit((text) => {
 
 <template>
    <span class="_word">
-      <span :class="{ matching }" v-for="(matching, index) in matchArray">{{ props.word[index] }}</span>
+      <span
+         v-for="(matching, index) in matchArray"
+         :key="index"
+         :class="{ matching }"
+      >
+         {{ props.word[index] }}
+      </span>
    </span>
 </template>
 
-<style lang="scss" scoped>
+<style
+   lang="scss"
+   scoped
+>
 ._word {
    position: absolute;
    left: v-bind('positionStyles.left');

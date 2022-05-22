@@ -1,7 +1,7 @@
 import { GameStatus, delta, frameCount, gameStatus } from '/src/store';
 
 import { FPS } from '/src/constants';
-import { runGameLoopHooks } from '/src/composables/gameLoop';
+import { runGameLoopHooks } from '/src/composables/hooks';
 
 let oldTime = performance.now();
 
