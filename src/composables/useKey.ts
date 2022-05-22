@@ -6,7 +6,6 @@ type UseKeyHandler = (event: KeyboardEvent, hotkeysEvent: HotkeysEvent) => void;
 interface Options {
    input?: boolean;
    prevent?: boolean;
-   false?: boolean;
    repeat?: boolean;
    stop?: boolean;
    source?: Ref<boolean> | ComputedRef<boolean> | (() => boolean);

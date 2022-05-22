@@ -1,14 +1,12 @@
-import TypingSound from '/src/assets/typing.mp3';
-
-export enum Sounds {
+export enum SoundTypes {
    Typing,
 }
 
-const sounds = Object.freeze({
-   [Sounds.Typing]: TypingSound,
-});
+export const sounds = {
+   [SoundTypes.Typing]: '',
+};
 
-export function playSound(sound: Sounds, volume = 1) {
+export function playSound(sound: SoundTypes, volume = 1) {
    const audio = new Audio(sounds[sound]);
    audio.volume = volume;
    audio.play();

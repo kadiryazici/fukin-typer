@@ -42,3 +42,23 @@ body {
    display: flex;
    width: 100%;
 }
+
+.modal-in {
+   animation: modal_anim 0.15s;
+}
+
+.modal-out {
+   animation: modal_anim 0.15s reverse;
+}
+
+@keyframes modal_anim {
+   0% {
+      transform: scale(1.3);
+      opacity: 0;
+   }
+
+   100% {
+      transform: scale(1);
+      opacity: 1;
+   }
+}
