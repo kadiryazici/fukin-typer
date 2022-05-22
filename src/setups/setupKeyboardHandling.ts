@@ -10,7 +10,6 @@ export function setupKeyboardHandling() {
 
       const char = e.key.toLowerCase();
       if (isRepeating(e) || !isValidChar(char) || e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) return;
-      e.preventDefault();
       runInputHooks(char);
    });
 }

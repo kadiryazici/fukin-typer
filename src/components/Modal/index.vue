@@ -1,4 +1,7 @@
-<script lang="ts" setup>
+<script
+   lang="ts"
+   setup
+>
 import { useKey } from '/src/composables/useKey';
 
 interface Props {
@@ -20,8 +23,15 @@ useKey('esc', () => setVisibility(false), { source: () => props.modelValue });
 
 <template>
    <Teleport to="body">
-      <Transition enterActiveClass="_modal-in" leaveActiveClass="_modal-out">
-         <div v-if="props.modelValue" @click.self.stop="setVisibility(false)" class="_modal-backdrop">
+      <Transition
+         enterActiveClass="modal-in"
+         leaveActiveClass="modal-out"
+      >
+         <div
+            v-if="props.modelValue"
+            @click.self.stop="setVisibility(false)"
+            class="_modal-backdrop"
+         >
             <div class="_modal">
                <slot />
             </div>
@@ -30,7 +40,10 @@ useKey('esc', () => setVisibility(false), { source: () => props.modelValue });
    </Teleport>
 </template>
 
-<style lang="scss" scoped>
+<style
+   lang="scss"
+   scoped
+>
 ._modal-backdrop {
    background-color: rgb(0 0 0 / 0.4);
    display: flex;
@@ -49,26 +62,6 @@ useKey('esc', () => setVisibility(false), { source: () => props.modelValue });
       max-width: 700px;
       min-height: 300px;
       display: flex;
-   }
-}
-
-._modal-in {
-   animation: _modal_in 0.15s;
-}
-
-._modal-out {
-   animation: _modal_in 0.15s reverse;
-}
-
-@keyframes _modal_in {
-   0% {
-      transform: scale(1.3);
-      opacity: 0;
-   }
-
-   100% {
-      transform: scale(1);
-      opacity: 1;
    }
 }
 </style>

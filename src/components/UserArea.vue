@@ -2,7 +2,7 @@
    lang="ts"
    setup
 >
-import { playSound, Sounds } from '/src/helpers/playSound';
+import { playSound, SoundTypes } from '/src/helpers/playSound';
 import { GameStatus, gameStatus, savedChars } from '/src/store';
 import { onInput } from '/src/composables/hooks';
 
@@ -17,7 +17,7 @@ onInput((char) => {
    }
 
    savedChars.value.push(char);
-   playSound(Sounds.Typing, 0.1);
+   playSound(SoundTypes.Typing, 0.1);
 });
 
 useKey(
