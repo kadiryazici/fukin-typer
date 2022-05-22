@@ -2,7 +2,6 @@ import { frameCount, savedChars } from '/src/store';
 
 import { createHookStore } from '/src/helpers/createHookStore';
 import { msToFrame } from '/src/helpers/msToFrame';
-import { onGameLoop } from '/src/composables/gameLoop';
 
 const submitHook = createHookStore<(userInput: string) => void>();
 export const runSubmitHooks = submitHook.runHooks;
@@ -19,6 +18,10 @@ export const onWordMatch = wordMatchHooks.createHookComposable();
 const inputHook = createHookStore<(key: string) => void>();
 export const runInputHooks = inputHook.runHooks;
 export const onInput = inputHook.createHookComposable();
+
+const gameLoopHook = createHookStore<(delta: number) => void>();
+export const runGameLoopHooks = (delta: number) => gameLoopHook.runHooks(delta);
+export const onGameLoop = gameLoopHook.createHookComposable();
 
 export function onInterval(ms: number, hook: () => void) {
    return onGameLoop(() => {

@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+   setup
+   lang="ts"
+>
 import { setupKeyboardHandling } from '/src/setups/setupKeyboardHandling';
 import { setupGameLoop } from '/src/setups/setupGameLoop';
 import UserArea from './components/UserArea.vue';
@@ -27,7 +30,10 @@ setupGameLoop();
 </script>
 
 <template>
-   <Modal :modelValue="gameStatus === GameStatus.Stopped" @update:modelValue="gameStatus = GameStatus.Running">
+   <Modal
+      :modelValue="gameStatus === GameStatus.Stopped"
+      @update:modelValue="gameStatus = GameStatus.Running"
+   >
       <div class="stop-modal">Stopped</div>
    </Modal>
    <UserArea />
