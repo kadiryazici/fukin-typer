@@ -2,9 +2,10 @@
    lang="ts"
    setup
 >
-import { playSound, SoundTypes } from '/src/helpers/playSound';
+import { playSound } from '/src/helpers/playSound';
 import { GameStatus, gameStatus, savedChars } from '/src/store';
 import { onInput } from '/src/composables/hooks';
+import { SoundTypes } from '/src/constants/sound';
 
 import PlayIcon from 'virtual:icons/ph/play-fill';
 import PauseIcon from 'virtual:icons/ph/pause-fill';

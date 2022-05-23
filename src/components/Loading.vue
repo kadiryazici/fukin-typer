@@ -3,8 +3,11 @@
    setup
 >
 import { onMounted } from 'vue';
-import { sounds, SoundTypes } from '../helpers/playSound';
+import { sounds, SoundTypes } from '/src/constants/sound';
+
 import TypingSound from '/src/assets/typing.mp3';
+import PopSound from '/src/assets/pop.wav';
+import PopSound2 from '/src/assets/pop2.wav';
 
 interface Emits {
    (e: 'loaded'): void;
@@ -15,6 +18,8 @@ const emit = defineEmits<Emits>();
 const getLoadSoundPromises = () => {
    const soundMap: [SoundTypes, string][] = [
       [SoundTypes.Typing, TypingSound], //
+      [SoundTypes.Pop, PopSound],
+      [SoundTypes.Pop2, PopSound2],
    ];
 
    return soundMap.map(([type, url]) =>

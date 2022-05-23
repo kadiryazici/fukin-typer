@@ -14,11 +14,19 @@ import { killEnemy } from '/src/helpers/killEnemy';
 import Modal from '/src/components/Modal/index.vue';
 import { useKey } from './composables/useKey';
 import Loading from './components/Loading.vue';
+import { playSound } from './helpers/playSound';
+import { pickRandom } from './helpers/pickRandom';
+import { SoundTypes } from './constants/sound';
 
 const loading = ref(true);
 
-onWordMatch(killEnemy);
 onInterval(2000, () => createEnemy());
+
+onWordMatch((word) => {
+   killEnemy(word);
+   playSound(pickRandom([SoundTypes.Pop, SoundTypes.Pop2]));
+});
+
 useKey(
    'enter',
    () => {

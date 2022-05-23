@@ -1,10 +1,4 @@
-export enum SoundTypes {
-   Typing,
-}
-
-export const sounds = {
-   [SoundTypes.Typing]: '',
-};
+import { SoundTypes, sounds } from '/src/constants/sound';
 
 export function playSound(sound: SoundTypes, volume = 1) {
    const audio = new Audio(sounds[sound]);

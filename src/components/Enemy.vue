@@ -19,10 +19,21 @@ const positionStyles = computed(() => ({
    left: props.position.x + '%',
    top: props.position.y + '%',
 }));
+
 const [matchArray, resetMatchArray] = resettableRef<boolean[]>(() => Array(props.word.length).fill(false));
 
+const getRandomUnsinged8 = () => Math.floor(Math.random() * (190 - 80) + 80);
+const color = `rgb(${getRandomUnsinged8()}, ${getRandomUnsinged8()}, ${getRandomUnsinged8()})`;
+
+const matchCount = computed(() => matchArray.value.filter(Boolean).length);
+
+const matchPercent = computed(() => {
+   return `${1 + ((matchCount.value / props.word.length) * 100) / 400}`;
+});
+
 onCharsChange((chars) => {
-   if (chars.length > props.word.length) return resetMatchArray();
+   resetMatchArray();
+   if (chars.length > props.word.length) return;
 
    for (let i = 0; i < chars.length; i++) {
       const char = chars[i];
@@ -49,6 +60,7 @@ onSubmit((text) => {
       <span
          v-for="(matching, index) in matchArray"
          :key="index"
+         class="_letter"
          :class="{ matching }"
       >
          {{ props.word[index] }}
@@ -61,19 +73,25 @@ onSubmit((text) => {
    scoped
 >
 ._word {
+   color: rgb(24, 24, 24);
    position: absolute;
    left: v-bind('positionStyles.left');
    aspect-ratio: 1/1;
    top: v-bind('positionStyles.top');
    border-radius: 50%;
-   background-color: white;
+   background-color: v-bind(color);
+   box-shadow: 0px 0px 4px 1px v-bind(color);
    display: flex;
    align-items: center;
    justify-content: center;
    padding: 5px;
+   transform: scale(v-bind(matchPercent));
+   transition-property: transform;
+   transition-duration: 300ms;
+   z-index: v-bind(matchCount);
 }
+
 .matching {
-   color: blue;
-   font-weight: bold;
+   color: rgb(255, 255, 255);
 }
 </style>
